@@ -20,6 +20,7 @@ class AddItemView: UIView {
     @IBOutlet weak var seperateItemsLabel: UILabel!
     @IBOutlet weak var addItemTextView: UITextView!
     @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var countLabel: UILabel!
     
     var shadow: UIView?
     weak var delegate: AddItemDelegate?
@@ -70,8 +71,7 @@ class AddItemView: UIView {
         
         // Shadow for background layer
         self.shadow = UIView(frame: frame)
-        shadow!.backgroundColor = UIColor.black.withAlphaComponent(0.6
-        )
+        shadow!.backgroundColor = UIColor.black.withAlphaComponent(0.6)
     }
     
     
@@ -79,17 +79,22 @@ class AddItemView: UIView {
     
     
     @IBAction func submitButton(_ sender: UIButton) {
+        
+        var itemList: [Item] = []
         if addItemTextView.text == "" {return}
         
         if let delegate = self.delegate, let itemNames = addItemTextView.text {
             
             let stringList = itemNames.components(separatedBy: "\n")
-            let filteredList = stringList.filter({
-                
-                $0.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) != ""
             
-            })
-            let itemList = filteredList.map({ Item(name: $0)})
+            for s in stringList{
+                
+                let noReturns = s.trimmingCharacters(in: .whitespacesAndNewlines)
+                
+                if noReturns != ""{
+                    itemList.append(Item(name: noReturns))
+                }
+            }
             
             delegate.getItemsAdded(items: itemList)
             delegate.dismiss(view: self)
@@ -121,10 +126,18 @@ extension AddItemView: UITextViewDelegate{
         for c in text{
             if c == "\n"{
                 count+=1
+            }
         }
-
+        countLabel.text = String(count)
     }
-        print(count)
     
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.gray {
+            self.countLabel.text = String(0)
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
     }
+    
+    
 }

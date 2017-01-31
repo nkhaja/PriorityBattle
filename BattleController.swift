@@ -19,6 +19,7 @@ class BattleController: UIViewController {
     @IBOutlet weak var rightView: UIView!
     @IBOutlet weak var leftLabel: UILabel!
     @IBOutlet weak var rightLabel: UILabel!
+    @IBOutlet weak var dimissButton: UIButton!
     
     
     var items: [Item] = []
@@ -37,6 +38,8 @@ class BattleController: UIViewController {
         makeCombos()
         setTimer()
         currentTime = timeGiven
+        
+        
 //        currentPair = pairs.popLast()
         
         

@@ -10,8 +10,11 @@ import UIKit
 
 class AddItemController: UIViewController {
     
+    @IBOutlet weak var addItemButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addItemView: AddItemView!
+    @IBOutlet weak var beginButton: UIButton!
+    @IBOutlet weak var headerView: UIView!
     
     var items: [Item] = []
     
@@ -19,12 +22,25 @@ class AddItemController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addItemView.delegate = self
-        self.tableView.layer.shadowColor = UIColor.black.cgColor
-        self.tableView.layer.shadowOpacity = 0.8
         
-        self.tableView.layer.borderWidth = 3
-        self.tableView.layer.borderColor = UIColor(colorLiteralRed: 51, green: 51, blue: 51, alpha: 1).cgColor
+        
+        beginButton.layer.shadowOffset = CGSize(width: 0, height: 5)
+        beginButton.layer.shadowColor = UIColor.black.cgColor
+        beginButton.layer.shadowOpacity = 0.5
+        beginButton.layer.cornerRadius = 10
+        
+        addItemButton.imageView?.contentMode = .scaleAspectFit
+        
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     
     func shuffleArray<T>(array: [T]) -> [T] {
         
@@ -45,19 +61,33 @@ class AddItemController: UIViewController {
     @IBAction func addItemButton(_ sender: Any) {
         
         self.addItemView.addShadow(view: self.view)
+        self.addItemView.center = CGPoint(x: self.view.center.x, y: self.view.frame.height*1.5)
+//        self.addItemView.center = self.view.center
         
-        self.addItemView.center = self.view.center
-        self.addItemView.addItemTextView.text = nil
+        self.addItemView.addItemTextView.text = "Add Items Here"
+        self.addItemView.addItemTextView.textColor = UIColor.gray
+        self.addItemView.addItemTextView.delegate = addItemView
         
         self.view.addSubview(self.addItemView.shadow!)
         self.view.addSubview(addItemView)
+        
+        // Position on screen 
+        // translate down y + 600
+        // scale down 0.5
+        
+        
+        UIView.animate(withDuration: 0.3) { [unowned self] in
+            
+            let moveUp = CGAffineTransform(translationX: 0, y: -self.view.frame.height)
+            self.addItemView.transform = moveUp
+        }
     }
     
     
     @IBAction func beginButton(_ sender: Any) {
         
         if self.items.count < 2{
-            let alert = UIAlertController(title: "Not enough options", message: "You must create at least three options", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Not enough items", message: "You must add at least three items", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
             
             present(alert, animated: true, completion: nil)
@@ -87,14 +117,23 @@ extension AddItemController: AddItemDelegate{
         
     
     func dismiss(view: AddItemView) {
-        if let shadow = view.shadow{
-            shadow.removeFromSuperview()
-            view.removeFromSuperview()
+        
+        UIView.animate(withDuration: 0.3, animations:{
+            
+            let move = CGAffineTransform(translationX: 0, y: self.view.frame.height)
+            view.transform = move
+        }) { completed in
+            
+            if let shadow = view.shadow{
+                shadow.removeFromSuperview()
+                view.removeFromSuperview()
+            }
+                
+            else{
+                view.removeFromSuperview()
+            }
         }
         
-        else{
-            view.removeFromSuperview()
-        }
     }
     
     
