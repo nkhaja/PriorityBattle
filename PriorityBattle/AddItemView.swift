@@ -98,13 +98,13 @@ class AddItemView: UIView {
             
             delegate.getItemsAdded(items: itemList)
             delegate.dismiss(view: self)
+            
         }
     }
     
     @IBAction func dismissButton(_ sender: UIButton) {
         if let delegate = delegate{
             delegate.dismiss(view: self)
-        
         }
     }
     

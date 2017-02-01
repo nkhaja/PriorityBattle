@@ -61,8 +61,9 @@ class AddItemController: UIViewController {
     @IBAction func addItemButton(_ sender: Any) {
         
         self.addItemView.addShadow(view: self.view)
-        self.addItemView.center = CGPoint(x: self.view.center.x, y: self.view.frame.height*1.5)
+//        self.addItemView.center = CGPoint(x: self.view.center.x, y: self.view.frame.height*1.5)
 //        self.addItemView.center = self.view.center
+        self.addItemView.frame.origin = self.view.frame.origin
         
         self.addItemView.addItemTextView.text = "Add Items Here"
         self.addItemView.addItemTextView.textColor = UIColor.gray
@@ -71,16 +72,37 @@ class AddItemController: UIViewController {
         self.view.addSubview(self.addItemView.shadow!)
         self.view.addSubview(addItemView)
         
-        // Position on screen 
+        
+        
+        let scaleUp = CGAffineTransform(scaleX: 0.1, y: 0.1)
+        self.addItemView.transform = scaleUp
+        self.addItemView.layer.opacity = 0
+        
+        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 5, initialSpringVelocity: 2, options: [], animations: {
+            self.addItemView.layer.opacity = 1
+            self.addItemView.transform = CGAffineTransform.identity
+        }, completion: { complete in
+            self.addItemView.addItemTextView.becomeFirstResponder()
+        })
+        
+  
+        
+        
+//        UIView.animate(withDuration: 0.2) {
+//            self.addItemView.layer.opacity = 1
+//            self.addItemView.transform = CGAffineTransform.identity
+//            
+//        }
+        // Position on screen
         // translate down y + 600
         // scale down 0.5
         
         
-        UIView.animate(withDuration: 0.3) { [unowned self] in
-            
-            let moveUp = CGAffineTransform(translationX: 0, y: -self.view.frame.height)
-            self.addItemView.transform = moveUp
-        }
+//        UIView.animate(withDuration: 0.3) { [unowned self] in
+//            
+//            let moveUp = CGAffineTransform(translationX: 0, y: -self.view.frame.height)
+//            self.addItemView.transform = moveUp
+//        }
     }
     
     
@@ -116,7 +138,7 @@ extension AddItemController: AddItemDelegate{
     }
         
     
-    func dismiss(view: AddItemView) {
+    func dismiss(view: AddItemView){
         
         UIView.animate(withDuration: 0.3, animations:{
             
@@ -132,6 +154,9 @@ extension AddItemController: AddItemDelegate{
             else{
                 view.removeFromSuperview()
             }
+            
+            view.transform = CGAffineTransform.identity
+
         }
         
     }
