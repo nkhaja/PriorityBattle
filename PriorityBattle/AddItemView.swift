@@ -104,6 +104,7 @@ class AddItemView: UIView {
     
     @IBAction func dismissButton(_ sender: UIButton) {
         if let delegate = delegate{
+//            self.addItemTextView.resignFirstResponder()
             delegate.dismiss(view: self)
         }
     }

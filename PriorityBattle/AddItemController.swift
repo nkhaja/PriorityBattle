@@ -15,6 +15,7 @@ class AddItemController: UIViewController {
     @IBOutlet weak var addItemView: AddItemView!
     @IBOutlet weak var beginButton: UIButton!
     @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var clearAllButton: UIButton!
     
     var items: [Item] = []
     
@@ -29,6 +30,7 @@ class AddItemController: UIViewController {
         beginButton.layer.shadowOpacity = 0.5
         beginButton.layer.cornerRadius = 10
         
+        clearAllButton.imageView?.contentMode = .scaleAspectFit
         addItemButton.imageView?.contentMode = .scaleAspectFit
         
     }
@@ -63,7 +65,11 @@ class AddItemController: UIViewController {
         self.addItemView.addShadow(view: self.view)
 //        self.addItemView.center = CGPoint(x: self.view.center.x, y: self.view.frame.height*1.5)
 //        self.addItemView.center = self.view.center
+        
+        let rect = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height*0.5)
+        self.addItemView.frame = rect
         self.addItemView.frame.origin = self.view.frame.origin
+        
         
         self.addItemView.addItemTextView.text = "Add Items Here"
         self.addItemView.addItemTextView.textColor = UIColor.gray
@@ -84,25 +90,6 @@ class AddItemController: UIViewController {
         }, completion: { complete in
             self.addItemView.addItemTextView.becomeFirstResponder()
         })
-        
-  
-        
-        
-//        UIView.animate(withDuration: 0.2) {
-//            self.addItemView.layer.opacity = 1
-//            self.addItemView.transform = CGAffineTransform.identity
-//            
-//        }
-        // Position on screen
-        // translate down y + 600
-        // scale down 0.5
-        
-        
-//        UIView.animate(withDuration: 0.3) { [unowned self] in
-//            
-//            let moveUp = CGAffineTransform(translationX: 0, y: -self.view.frame.height)
-//            self.addItemView.transform = moveUp
-//        }
     }
     
     
@@ -124,6 +111,13 @@ class AddItemController: UIViewController {
         self.present(battleVC, animated: true, completion: nil)
     
     }
+    
+    @IBAction func clearAllButton(_ sender: UIButton) {
+        self.items = []
+        tableView.reloadData()
+    }
+    
+    
 }
 
 
@@ -146,6 +140,7 @@ extension AddItemController: AddItemDelegate{
             view.transform = move
         }) { completed in
             
+  
             if let shadow = view.shadow{
                 shadow.removeFromSuperview()
                 view.removeFromSuperview()

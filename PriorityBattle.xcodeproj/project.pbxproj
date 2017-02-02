@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD5A13491E43B28D00665E7F /* low_beep.wav in Resources */ = {isa = PBXBuildFile; fileRef = BD5A13471E43B28D00665E7F /* low_beep.wav */; };
+		BD5A134A1E43B28D00665E7F /* high_beep.wav in Resources */ = {isa = PBXBuildFile; fileRef = BD5A13481E43B28D00665E7F /* high_beep.wav */; };
 		BDE44C361E3BD82100222936 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE44C351E3BD82100222936 /* AppDelegate.swift */; };
 		BDE44C381E3BD82100222936 /* AddItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE44C371E3BD82100222936 /* AddItemController.swift */; };
 		BDE44C3B1E3BD82100222936 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDE44C391E3BD82100222936 /* Main.storyboard */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BD5A13471E43B28D00665E7F /* low_beep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = low_beep.wav; sourceTree = "<group>"; };
+		BD5A13481E43B28D00665E7F /* high_beep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = high_beep.wav; sourceTree = "<group>"; };
 		BDE44C321E3BD82100222936 /* PriorityBattle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PriorityBattle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDE44C351E3BD82100222936 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BDE44C371E3BD82100222936 /* AddItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemController.swift; sourceTree = "<group>"; };
@@ -84,6 +88,8 @@
 				BDE44C3C1E3BD82100222936 /* Assets.xcassets */,
 				BDE44C3E1E3BD82100222936 /* LaunchScreen.storyboard */,
 				BDE44C411E3BD82100222936 /* Info.plist */,
+				BD5A13471E43B28D00665E7F /* low_beep.wav */,
+				BD5A13481E43B28D00665E7F /* high_beep.wav */,
 			);
 			path = PriorityBattle;
 			sourceTree = "<group>";
@@ -149,8 +155,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDE44C401E3BD82100222936 /* LaunchScreen.storyboard in Resources */,
+				BD5A13491E43B28D00665E7F /* low_beep.wav in Resources */,
 				BDE44C3D1E3BD82100222936 /* Assets.xcassets in Resources */,
 				BDE44C3B1E3BD82100222936 /* Main.storyboard in Resources */,
+				BD5A134A1E43B28D00665E7F /* high_beep.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,10 +301,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = PU7KSX8Z6J;
 				INFOPLIST_FILE = PriorityBattle/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Makeschool.PriorityBattle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -306,10 +316,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = PU7KSX8Z6J;
 				INFOPLIST_FILE = PriorityBattle/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Makeschool.PriorityBattle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -332,6 +344,7 @@
 				BDE44C461E3BD82100222936 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

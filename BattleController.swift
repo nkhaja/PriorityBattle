@@ -8,6 +8,8 @@
 
 import UIKit
 import AudioToolbox
+import AVFoundation
+
 
 
 class BattleController: UIViewController {
@@ -31,16 +33,41 @@ class BattleController: UIViewController {
     var currentPair:(left:Item, right:Item)?
     var invisibleRect = CGRect(x: 0, y: 0, width: 0, height: 0)
     var labelStandardFrame: CGRect?
+    var firstPass: Bool = true
+    var secondPass: Bool = true
+    var defaultColor: UIColor?
+    let greenColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
     
+
+    
+    
+    // Sound variables
+    var soundEffect: AVAudioPlayer?
+    var lowBeepUrl:URL = URL(fileURLWithPath: Bundle.main.path(forResource: "low_beep.wav", ofType: nil)!)
+    var highBeepUrl: URL = URL(fileURLWithPath: Bundle.main.path(forResource: "high_beep.wav", ofType: nil)!)
+    
+    
+    var feedbackGenerator: UINotificationFeedbackGenerator?
+    
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         makeCombos()
         setTimer()
         currentTime = timeGiven
+        defaultColor = timerLabel.textColor
+        dimissButton.imageView?.contentMode = .scaleAspectFit
+        feedbackGenerator = UINotificationFeedbackGenerator()
+
         
-        
-//        currentPair = pairs.popLast()
         
         
         labelStandardFrame = self.leftLabel.frame
@@ -56,7 +83,6 @@ class BattleController: UIViewController {
         leftLabel.isUserInteractionEnabled = true
         leftLabel.addGestureRecognizer(tapLeft)
         leftLabel.isHidden = true
-//        leftLabel.text = currentPair!.left.name
 
         
         rightView.isUserInteractionEnabled = true
@@ -65,11 +91,18 @@ class BattleController: UIViewController {
         rightLabel.isUserInteractionEnabled = true
         rightLabel.addGestureRecognizer(tapRight)
         rightLabel.isHidden = true
-//        rightLabel.text = currentPair!.right.name
         
+
+        leftView.layer.borderColor = greenColor.cgColor
+        leftView.layer.borderWidth = 5
         
+        rightView.layer.borderColor = greenColor.cgColor
+        rightView.layer.borderWidth = 5
         
-        // Do any additional setup after loading the view.
+        }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        stopSound()
     }
     
     func makeCombos(){
@@ -78,14 +111,16 @@ class BattleController: UIViewController {
                 pairs.append((items[i],items[j]))
             }
         }
-//        pairs.append((items[items.count - 2], items.last!))
 
     }
     
+    
     func tapOccurred(){
         
-        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
         
+        feedbackGenerator?.prepare()
+        feedbackGenerator!.notificationOccurred(.success)
+    
         
         UIView.animate(withDuration: 0.2) {
             let scale = CGAffineTransform(scaleX: 0.01, y: 0.01)
@@ -93,9 +128,10 @@ class BattleController: UIViewController {
             self.rightLabel.transform = scale
         }
         
-        if pairs.count > 0{
+        if pairs.count > 0 {
             currentPair = pairs.popLast()
             currentTime = timeGiven
+            timerLabel.textColor = greenColor
             timerLabel.text = String(currentTime)
             
             self.leftLabel.text = currentPair!.left.name
@@ -133,6 +169,7 @@ class BattleController: UIViewController {
     
     func leftTapped(){
         currentPair!.left.score += 1
+        triggerTapAnimation(tappedView: leftView)
         tapOccurred()
         
 
@@ -140,12 +177,54 @@ class BattleController: UIViewController {
     
     func rightTapped(){
         currentPair!.right.score += 1
+        triggerTapAnimation(tappedView: rightView)
         tapOccurred()
     }
     
+    func makeSound(url: URL){
+        do {
+        let sound = try AVAudioPlayer(contentsOf: url)
+        self.soundEffect = sound
+        sound.play()
+        }
+        
+        catch {
+        // couldn't load file :(
+        }
     
+    }
+    
+    func stopSound(){
+        if soundEffect != nil {
+            soundEffect!.stop()
+            soundEffect = nil
+        }
+    }
+    
+    func triggerTapAnimation(tappedView: UIView){
+        let startColor = tappedView.backgroundColor
+        
+        
+        UIView.animate(withDuration: 0.1) {
+            let transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+            tappedView.backgroundColor = UIColor.gray
+            tappedView.transform = transform
+        }
+        
+        UIView.animate(withDuration: 0.1) {
+            tappedView.backgroundColor = startColor
+            tappedView.transform = CGAffineTransform.identity
+            
+        }
+        
+        
+    }
 
-    
+
+
+
+
+
     
 
     override func didReceiveMemoryWarning() {
@@ -155,6 +234,7 @@ class BattleController: UIViewController {
     
     @IBAction func exitButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+        self.timer?.invalidate()
     }
     
     
@@ -169,26 +249,43 @@ extension BattleController{
     }
     
     func updateTime(){
-        if currentTime > 0 {
+    
+        if firstPass{
+            timerLabel.text = "Begin!"
+            makeSound(url: highBeepUrl)
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+            firstPass = false
+            currentPair = pairs.popLast()
+            
+            leftLabel.isHidden = false
+            leftLabel.text = currentPair!.left.name
+            
+            rightLabel.isHidden = false
+            rightLabel.text = currentPair!.right.name
+        }
+         
+        else if currentTime > 1{
             currentTime -= 1
             timerLabel.text! = String(currentTime)
+            makeSound(url: lowBeepUrl)
         }
             
-        else if self.leftLabel.isHidden {
-            self.leftLabel.isHidden = false
-            self.rightLabel.isHidden = false
-            self.timerLabel.text = "Begin!"
-            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-            tapOccurred()
-        }
-    
-        else{
-            currentTime = timeGiven
-            if timerLabel.text != "Begin!"{
-                leftTapped()
-            }
-
+        else if currentTime == 1 {
+            currentTime -= 1
             timerLabel.text! = String(currentTime)
+            timerLabel.textColor = UIColor.red
+            makeSound(url: lowBeepUrl)
+        }
+            
+        
+        else{
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+            timerLabel.textColor = defaultColor
+            currentTime = timeGiven
+            timerLabel.text! = String(currentTime)
+            leftTapped()
+            makeSound(url: highBeepUrl)
+
         }
     }
 }
