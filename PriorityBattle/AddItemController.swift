@@ -39,10 +39,7 @@ class AddItemController: UIViewController {
         return .lightContent
     }
     
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
-    
+
     
     func shuffleArray<T>(array: [T]) -> [T] {
         
