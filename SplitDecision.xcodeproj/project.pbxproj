@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD43AAD81E4E3E590000C39D /* SplitDecisionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD43AAD71E4E3E590000C39D /* SplitDecisionTests.swift */; };
 		BD5A13491E43B28D00665E7F /* low_beep.wav in Resources */ = {isa = PBXBuildFile; fileRef = BD5A13471E43B28D00665E7F /* low_beep.wav */; };
 		BD5A134A1E43B28D00665E7F /* high_beep.wav in Resources */ = {isa = PBXBuildFile; fileRef = BD5A13481E43B28D00665E7F /* high_beep.wav */; };
 		BDE44C361E3BD82100222936 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE44C351E3BD82100222936 /* AppDelegate.swift */; };
@@ -24,10 +25,23 @@
 		BDE44C581E3D765700222936 /* ResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE44C571E3D765700222936 /* ResultCell.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		BD43AADA1E4E3E590000C39D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BDE44C2A1E3BD82100222936 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BDE44C311E3BD82100222936;
+			remoteInfo = SplitDecision;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		BD43AAD51E4E3E590000C39D /* SplitDecisionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SplitDecisionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD43AAD71E4E3E590000C39D /* SplitDecisionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitDecisionTests.swift; sourceTree = "<group>"; };
+		BD43AAD91E4E3E590000C39D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD5A13471E43B28D00665E7F /* low_beep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = low_beep.wav; sourceTree = "<group>"; };
 		BD5A13481E43B28D00665E7F /* high_beep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = high_beep.wav; sourceTree = "<group>"; };
-		BDE44C321E3BD82100222936 /* PriorityBattle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PriorityBattle.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDE44C321E3BD82100222936 /* SplitDecision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SplitDecision.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDE44C351E3BD82100222936 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BDE44C371E3BD82100222936 /* AddItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemController.swift; sourceTree = "<group>"; };
 		BDE44C3A1E3BD82100222936 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -45,6 +59,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		BD43AAD21E4E3E590000C39D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BDE44C2F1E3BD82100222936 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -55,10 +76,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BD43AAD61E4E3E590000C39D /* SplitDecisionTests */ = {
+			isa = PBXGroup;
+			children = (
+				BD43AAD71E4E3E590000C39D /* SplitDecisionTests.swift */,
+				BD43AAD91E4E3E590000C39D /* Info.plist */,
+			);
+			path = SplitDecisionTests;
+			sourceTree = "<group>";
+		};
 		BDE44C291E3BD82100222936 = {
 			isa = PBXGroup;
 			children = (
 				BDE44C341E3BD82100222936 /* PriorityBattle */,
+				BD43AAD61E4E3E590000C39D /* SplitDecisionTests */,
 				BDE44C331E3BD82100222936 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -66,7 +97,8 @@
 		BDE44C331E3BD82100222936 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BDE44C321E3BD82100222936 /* PriorityBattle.app */,
+				BDE44C321E3BD82100222936 /* SplitDecision.app */,
+				BD43AAD51E4E3E590000C39D /* SplitDecisionTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -97,9 +129,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BDE44C311E3BD82100222936 /* PriorityBattle */ = {
+		BD43AAD41E4E3E590000C39D /* SplitDecisionTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BDE44C441E3BD82100222936 /* Build configuration list for PBXNativeTarget "PriorityBattle" */;
+			buildConfigurationList = BD43AADE1E4E3E590000C39D /* Build configuration list for PBXNativeTarget "SplitDecisionTests" */;
+			buildPhases = (
+				BD43AAD11E4E3E590000C39D /* Sources */,
+				BD43AAD21E4E3E590000C39D /* Frameworks */,
+				BD43AAD31E4E3E590000C39D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BD43AADB1E4E3E590000C39D /* PBXTargetDependency */,
+			);
+			name = SplitDecisionTests;
+			productName = SplitDecisionTests;
+			productReference = BD43AAD51E4E3E590000C39D /* SplitDecisionTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BDE44C311E3BD82100222936 /* SplitDecision */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BDE44C441E3BD82100222936 /* Build configuration list for PBXNativeTarget "SplitDecision" */;
 			buildPhases = (
 				BDE44C2E1E3BD82100222936 /* Sources */,
 				BDE44C2F1E3BD82100222936 /* Frameworks */,
@@ -109,9 +159,9 @@
 			);
 			dependencies = (
 			);
-			name = PriorityBattle;
+			name = SplitDecision;
 			productName = PriorityBattle;
-			productReference = BDE44C321E3BD82100222936 /* PriorityBattle.app */;
+			productReference = BDE44C321E3BD82100222936 /* SplitDecision.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -124,6 +174,12 @@
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = MakeSchool;
 				TargetAttributes = {
+					BD43AAD41E4E3E590000C39D = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = PU7KSX8Z6J;
+						ProvisioningStyle = Automatic;
+						TestTargetID = BDE44C311E3BD82100222936;
+					};
 					BDE44C311E3BD82100222936 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = PU7KSX8Z6J;
@@ -131,7 +187,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BDE44C2D1E3BD82100222936 /* Build configuration list for PBXProject "PriorityBattle" */;
+			buildConfigurationList = BDE44C2D1E3BD82100222936 /* Build configuration list for PBXProject "SplitDecision" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -144,12 +200,20 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BDE44C311E3BD82100222936 /* PriorityBattle */,
+				BDE44C311E3BD82100222936 /* SplitDecision */,
+				BD43AAD41E4E3E590000C39D /* SplitDecisionTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		BD43AAD31E4E3E590000C39D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BDE44C301E3BD82100222936 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -165,6 +229,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		BD43AAD11E4E3E590000C39D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD43AAD81E4E3E590000C39D /* SplitDecisionTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BDE44C2E1E3BD82100222936 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -183,6 +255,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BD43AADB1E4E3E590000C39D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BDE44C311E3BD82100222936 /* SplitDecision */;
+			targetProxy = BD43AADA1E4E3E590000C39D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		BDE44C391E3BD82100222936 /* Main.storyboard */ = {
@@ -204,6 +284,34 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		BD43AADC1E4E3E590000C39D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = PU7KSX8Z6J;
+				INFOPLIST_FILE = SplitDecisionTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Makeschool.SplitDecisionTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SplitDecision.app/SplitDecision";
+			};
+			name = Debug;
+		};
+		BD43AADD1E4E3E590000C39D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = PU7KSX8Z6J;
+				INFOPLIST_FILE = SplitDecisionTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Makeschool.SplitDecisionTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SplitDecision.app/SplitDecision";
+			};
+			name = Release;
+		};
 		BDE44C421E3BD82100222936 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -303,7 +411,7 @@
 				INFOPLIST_FILE = PriorityBattle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Makeschool.PriorityBattle;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Makeschool.SplitDecision;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -318,7 +426,7 @@
 				INFOPLIST_FILE = PriorityBattle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Makeschool.PriorityBattle;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Makeschool.SplitDecision;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -328,7 +436,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BDE44C2D1E3BD82100222936 /* Build configuration list for PBXProject "PriorityBattle" */ = {
+		BD43AADE1E4E3E590000C39D /* Build configuration list for PBXNativeTarget "SplitDecisionTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD43AADC1E4E3E590000C39D /* Debug */,
+				BD43AADD1E4E3E590000C39D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		BDE44C2D1E3BD82100222936 /* Build configuration list for PBXProject "SplitDecision" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BDE44C421E3BD82100222936 /* Debug */,
@@ -337,7 +453,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BDE44C441E3BD82100222936 /* Build configuration list for PBXNativeTarget "PriorityBattle" */ = {
+		BDE44C441E3BD82100222936 /* Build configuration list for PBXNativeTarget "SplitDecision" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BDE44C451E3BD82100222936 /* Debug */,

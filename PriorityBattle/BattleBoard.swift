@@ -17,7 +17,7 @@ class BattleBoard {
     init(items: [Item]){
         self.items = items
         makeCombos()
-        self.currentPair = pairs.popLast()
+//        self.currentPair = pairs.popLast()
     }
     
     func makeCombos(){
@@ -26,6 +26,7 @@ class BattleBoard {
                 pairs.append((items[i],items[j]))
             }
         }
+        
     }
     
     func getNext() -> (Item, Item){

@@ -50,9 +50,7 @@ class AddItemController: UIViewController {
             if i != randomIndex{
                 swap(&tempArray[i], &tempArray[randomIndex])
             }
-            
         }
-        
         return tempArray
     }
 
